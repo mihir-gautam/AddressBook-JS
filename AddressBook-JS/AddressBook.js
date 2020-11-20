@@ -308,3 +308,35 @@ function sortAddressBook(addressBook) {
 }
 sortAddressBook(addressBook);
 console.log(addressBook.toString());
+
+//UC 12 Sort address book by Name, City, State or Zip
+function sortAddressBook(property, addressBook) {
+    switch (property) {
+        case "First Name":
+            addressBook.sort((contact, contactObj) => contact.firstName.localeCompare(contactObj.firstName));
+            break;
+        case "City":
+            addressBook.sort((contact, contactObj) => contact.city.localeCompare(contactObj.city));
+            break;
+        case "State":
+            addressBook.sort((contact, contactObj) => contact.state.localeCompare(contactObj.state));
+            break;
+        case "Zip":
+            addressBook.sort(contact => contact.zip);
+            break;
+        default:
+            break;
+    }
+}
+console.log("Sorted Address Book by First Name: ");
+sortAddressBook("First Name", addressBook);
+console.log(addressBook.toString());
+console.log("Sorted Address Book by City: ");
+sortAddressBook("City", addressBook);
+console.log(addressBook.toString());
+console.log("Sorted Address Book by State: ");
+sortAddressBook("State", addressBook);
+console.log(addressBook.toString());
+console.log("Sorted Address Book by Zip: ");
+sortAddressBook("Zip", addressBook);
+console.log(addressBook.toString());
