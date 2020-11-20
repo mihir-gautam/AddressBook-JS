@@ -301,3 +301,10 @@ console.log(contactCountByCity);
 let contactCountByState = getContactCountByProperty("State", addressBook);
 console.log("Contact Count By State:");
 console.log(contactCountByState);
+
+//UC11 Sort alphabetically by First Name
+function sortAddressBook(addressBook) {
+    addressBook.sort((contact, contactObj) => contact.firstName.localeCompare(contactObj.firstName));
+}
+sortAddressBook(addressBook);
+console.log(addressBook.toString());
