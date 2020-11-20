@@ -166,12 +166,12 @@ function updateContact(property, value, contact) {
         console.log("Unable to Update!");
     }
 }
-/*
+
 let contact = findContact("Priyank", "Gupta", addressBook);
 updateContact("Last Name", "Sharma", contact);
 updateContact("Email", "priyank.sharma@gmail.com", contact);
 console.log("Updated Contact: " + contact.toString());
-*/
+
 
 //UC 5 Delete a contact
 function deleteContact(firstName, lastName, addressBook) {
@@ -183,6 +183,17 @@ function deleteContact(firstName, lastName, addressBook) {
     }
 }
 
+
 addressBook = deleteContact("Mihir", "Gautam", addressBook);
 console.log("Contacts: ");
 addressBook.forEach(contact => console.log(contact.toString()));
+
+
+//UC6 Find number of contacts
+function getContactCount(addressBook) {
+    return addressBook.reduce(count => count+1, 0);
+}
+let contactCount = getContactCount(addressBook);
+console.log("Number of Contacts: " + contactCount);
+
+
