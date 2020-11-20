@@ -80,7 +80,7 @@ class Contact {
         return this._phoneNumber;
     }
     set phoneNumber(phoneNumber) {
-        let phoneNumberRegex = RegExp('^([+][0-9]{3}[\\s]){0,1}[1-9]{1}[0-9]{9}$');
+        let phoneNumberRegex = RegExp('^([+][0-9]{2,3}[\\s]){0,1}[1-9]{1}[0-9]{9}$');
         if (phoneNumberRegex.test(phoneNumber)) {
             this._phoneNumber = phoneNumber;
         }
@@ -105,5 +105,18 @@ class Contact {
     }
 }
 
-let contact = new Contact("Mihir", "Gautam", "RL Nagar", "Kanpur", "Uttar Pradesh", 208022, 9988776655, "mihir.gautam@gmail.com");
-console.log(contact.toString());
+//UC 3 New address book to store contact details
+
+let addressBook = new Array();
+try {
+    addressBook.push(new Contact("Mihir", "Gautam", "Kanpur", "Kanpur", "Uttar Pradesh",
+                                208022,"+91 9988776644", "mihir.gautam@gmail.com"));
+    addressBook.push(new Contact("Nitesh", "Kumar", "Lucknow", "Lucknow", "Uttar Pradesh",
+                                128026, "+91 9999772210", "nitesh.kumar@gmail.com"));
+    addressBook.push(new Contact("Priyank", "Gupta", "Mumbai", "Mumbai", "Maharashtra",
+                                220016, "+91 8899006789", "priyank.gupta@gmail.com"));
+} catch (error) {
+    console.log(error);
+}
+console.log("Contacts: ");
+addressBook.forEach(contact => console.log(contact.toString()));
