@@ -224,3 +224,20 @@ try {
     console.log(error);
 }
 
+//UC 8 Search person by city or state
+function getContactsInParticularCity(city) {
+    return addressBook.filter(contact => contact.city == city);
+}
+
+function getContactsInParticularState(state) {
+    return addressBook.filter(contact => contact.state == state);
+}
+
+let city = "Lucknow";
+let contactsInParticularCity = getContactsInParticularCity(city);
+console.log("Contacts in " + city + ":");
+contactsInParticularCity.forEach(contact => console.log(contact.toString()));
+let state = "Maharashtra";
+let contactsInParticularState = getContactsInParticularState(state);
+console.log("Contacts in " + state + ":");
+contactsInParticularState.forEach(contact => console.log(contact.toString()));
