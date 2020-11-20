@@ -166,8 +166,23 @@ function updateContact(property, value, contact) {
         console.log("Unable to Update!");
     }
 }
-
+/*
 let contact = findContact("Priyank", "Gupta", addressBook);
 updateContact("Last Name", "Sharma", contact);
 updateContact("Email", "priyank.sharma@gmail.com", contact);
 console.log("Updated Contact: " + contact.toString());
+*/
+
+//UC 5 Delete a contact
+function deleteContact(firstName, lastName, addressBook) {
+    let contact = findContact(firstName, lastName, addressBook);
+    if (contact != null) {
+        return addressBook.filter(contactObj => contactObj != contact);
+    } else {
+        console.log("Contact Not Found!");
+    }
+}
+
+addressBook = deleteContact("Mihir", "Gautam", addressBook);
+console.log("Contacts: ");
+addressBook.forEach(contact => console.log(contact.toString()));
