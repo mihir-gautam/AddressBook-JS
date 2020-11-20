@@ -118,5 +118,56 @@ try {
 } catch (error) {
     console.log(error);
 }
-console.log("Contacts: ");
-addressBook.forEach(contact => console.log(contact.toString()));
+//console.log("Contacts: ");
+//addressBook.forEach(contact => console.log(contact.toString()));
+
+//UC 4 Edit existing person details
+function findContact(firstName, lastName, addressBook) {
+    let contact;
+    addressBook.forEach(contactObj => {
+        if (contactObj.firstName == firstName && contactObj.lastName == lastName) {
+            contact = contactObj;
+        }
+    });
+    return contact;
+}
+function updateContact(property, value, contact) {
+    try {
+        switch (property) {
+            case "First Name":
+                contact.firstName = value;
+                break;
+            case "Last Name":
+                contact.lastName = value;
+                break;
+            case "Address":
+                contact.address = value;
+                break;
+            case "City":
+                contact.city = value;
+                break;
+            case "State":
+                contact.state = value;
+                break;
+            case "Zip":
+                contact.zip = value;
+                break;
+            case "Phone Number":
+                contact.phoneNumber = value;
+                break;
+            case "Email":
+                contact.email = value;
+                break;
+            default:
+                break;
+        }
+    } catch (error) {
+        console.log(error);
+        console.log("Unable to Update!");
+    }
+}
+
+let contact = findContact("Priyank", "Gupta", addressBook);
+updateContact("Last Name", "Sharma", contact);
+updateContact("Email", "priyank.sharma@gmail.com", contact);
+console.log("Updated Contact: " + contact.toString());
