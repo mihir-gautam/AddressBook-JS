@@ -108,18 +108,28 @@ class Contact {
 //UC 3 New address book to store contact details
 
 let addressBook = new Array();
+function addContactToAddressBook(contact, addressBook) {
+    let result = addressBook.find(contactObj => {
+        return contactObj.firstName == contact.firstName && contactObj.lastName == contact.lastName;
+    });
+    if (!result) {
+        addressBook.push(contact);
+    } else {
+        throw "Contact By That Name Already Present";
+    }
+}
 try {
-    addressBook.push(new Contact("Mihir", "Gautam", "Kanpur", "Kanpur", "Uttar Pradesh",
-                                208022,"+91 9988776644", "mihir.gautam@gmail.com"));
-    addressBook.push(new Contact("Nitesh", "Kumar", "Lucknow", "Lucknow", "Uttar Pradesh",
-                                128026, "+91 9999772210", "nitesh.kumar@gmail.com"));
-    addressBook.push(new Contact("Priyank", "Gupta", "Mumbai", "Mumbai", "Maharashtra",
-                                220016, "+91 8899006789", "priyank.gupta@gmail.com"));
+    addContactToAddressBook(new Contact("Mihir", "Gautam", "Kanpur", "Kanpur", "Uttar Pradesh",
+                                208022,"+91 9988776644", "mihir.gautam@gmail.com"),addressBook);
+    addContactToAddressBook(new Contact("Nitesh", "Kumar", "Lucknow", "Lucknow", "Uttar Pradesh",
+                                128026, "+91 9999772210", "nitesh.kumar@gmail.com"),addressBook);
+    addContactToAddressBook(new Contact("Priyank", "Gupta", "Mumbai", "Mumbai", "Maharashtra",
+                                220016, "+91 8899006789", "priyank.gupta@gmail.com"),addressBook);
 } catch (error) {
     console.log(error);
 }
-//console.log("Contacts: ");
-//addressBook.forEach(contact => console.log(contact.toString()));
+console.log("Contacts: ");
+addressBook.forEach(contact => console.log(contact.toString()));
 
 //UC 4 Edit existing person details
 function findContact(firstName, lastName, addressBook) {
@@ -196,4 +206,21 @@ function getContactCount(addressBook) {
 let contactCount = getContactCount(addressBook);
 console.log("Number of Contacts: " + contactCount);
 
+//UC7 Check for duplicate contact
+function CheckDuplicate(contact)
+   {
+       if(addressBook.find(c => c.firstName == contact.firstName && c.lastName == contact.lastName))
+           throw "Contact already exixts";
+   }
+try {
+    newContact = new Contact("Priyank", "Verma", "Mumbai", "Mumbai", "Maharashtra",
+    220016, "+91 8899006789", "priyank.verman@gmail.com");
+    if(!CheckDuplicate(newContact)){
+        addContactToAddressBook(newContact, addressBook);
+        console.log("Contacts: ");
+        addressBook.forEach(contact => console.log(contact.toString()));
+    };
+} catch (error) {
+    console.log(error);
+}
 
